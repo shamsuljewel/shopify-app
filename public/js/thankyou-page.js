@@ -1,5 +1,5 @@
 //Check if we have Shopify Checkout Object Available
-var appUrl = "http://doorhub-shopify.test";
+var appUrl = "https://shopify.doorhub.io";
 if(Shopify.shop != 'doorhub-test.myshopify.com') {
     appUrl = 'http://doorhub-shopify.test';
 }
