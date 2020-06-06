@@ -1,7 +1,7 @@
 //Check if we have Shopify Checkout Object Available
-var appUrl = "https://506db4a6.ngrok.io";
+var appUrl = "http://doorhub-shopify.test";
 if(Shopify.shop != 'doorhub-test.myshopify.com') {
-    appUrl = 'https://dhs.gotomy.dev';
+    appUrl = 'http://doorhub-shopify.test';
 }
 
 if (typeof Shopify !== 'undefined' && typeof Shopify.checkout !== 'undefined') {
