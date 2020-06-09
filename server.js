@@ -34,11 +34,13 @@ const {
 
 app.prepare().then(() => {
     const server = new Koa();
+    
     const router = new Router();
     server.use(session({sameSite: 'none', secure: true}, server));
     server.keys = [SHOPIFY_API_SECRET_KEY];
     console.log(SHOPIFY_API_KEY);
     server.use(
+        cors(),
         createShopifyAuth({
             apiKey: SHOPIFY_API_KEY,
             secret: SHOPIFY_API_SECRET_KEY,
