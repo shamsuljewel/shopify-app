@@ -37,7 +37,7 @@ app.prepare().then(() => {
     const router = new Router();
     server.use(session({sameSite: 'none', secure: true}, server));
     server.keys = [SHOPIFY_API_SECRET_KEY];
-
+    console.log(SHOPIFY_API_KEY);
     server.use(
         createShopifyAuth({
             apiKey: SHOPIFY_API_KEY,
