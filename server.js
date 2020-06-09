@@ -26,6 +26,9 @@ const handle = app.getRequestHandler();
 var koaBody = require('koa-body');
 var shopifyAPI = require('shopify-node-api');
 let Token
+var options = {
+    origin: '*'
+};
 const {
     SHOPIFY_API_SECRET_KEY,
     SHOPIFY_API_KEY,
@@ -39,8 +42,8 @@ app.prepare().then(() => {
     server.use(session({sameSite: 'none', secure: true}, server));
     server.keys = [SHOPIFY_API_SECRET_KEY];
     console.log(SHOPIFY_API_KEY);
+    server.use(cors(options));
     server.use(
-        cors(),
         createShopifyAuth({
             apiKey: SHOPIFY_API_KEY,
             secret: SHOPIFY_API_SECRET_KEY,
