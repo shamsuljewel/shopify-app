@@ -281,8 +281,8 @@ app.prepare().then(() => {
                 "service_name": "Doorhub - Sameday Shipping",
                 "description": data.data.message,
                 "service_code": Math.random().toString(36).substr(2, 9),
-                // "currency": data.data.data.priceUnit,
-                "currency": 'EUR',
+                "currency": data.data.data.priceUnit,
+                //"currency": 'EUR',
                 "total_price": data.data.data.price * 100
             }
         }
