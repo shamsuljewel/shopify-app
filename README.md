@@ -50,12 +50,16 @@ create table orders
 
 create table settings
 (
-    id           int auto_increment
+    id             int auto_increment
         primary key,
-    api_key      varchar(255) null,
-    payment_time int          null,
-    warehouse_id varchar(100) null,
-    access_token varchar(255) null
+    api_key        varchar(255)       null,
+    payment_time   int                null,
+    warehouse_id   varchar(100)       null,
+    access_token   varchar(255)       null,
+    use_dh_cost    tinyint default 1  not null,
+    ship_cost      int     default 50 null,
+    free_ship      tinyint default 0  not null,
+    free_threshold int     default 50 not null
 );
 ```
 

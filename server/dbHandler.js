@@ -54,8 +54,8 @@ async function StoreRef(data) {
 async function addSetting(data) {
     var table = 'settings'
     const check = await query(
-        "INSERT INTO " + table + " (api_key,payment_time,warehouse_id,access_token) VALUES" +
-        " ('" + data[0] + "', '" + data[1] + "', '" + data[2] + "', '" + data[3] + "' );"
+        "INSERT INTO " + table + " (api_key,payment_time,warehouse_id,access_token,use_dh_cost,ship_cost,free_ship,free_threshold) VALUES" +
+        " ('" + data[0] + "', '" + data[1] + "', '" + data[2] + "', '" + data[3] + "', '" + data[4] + "', '" + data[5] + "', '" + data[6] + "', '" + data[7] + "' );"
     )
     if (check) {
         console.log('added', check)
@@ -66,8 +66,7 @@ async function addSetting(data) {
 
 
 async function update(data) {
-    console.log('the data is here ', data)
-    let temp = `UPDATE settings SET  api_key=${JSON.stringify(data[0])} , payment_time=${data[1]} , warehouse_id=${data[2]} WHERE access_token=${JSON.stringify(data[3])} `
+    let temp = `UPDATE settings SET  api_key=${JSON.stringify(data[0])} , payment_time=${data[1]} , warehouse_id=${data[2]}, use_dh_cost=${data[4]}, ship_cost=${data[5]}, free_ship=${data[6]}, free_threshold=${data[7]} WHERE access_token=${JSON.stringify(data[3])} `
     console.log(temp)
     const check = await query(
         temp
@@ -91,11 +90,59 @@ async function getOrderDetailByOrderId(data) {
     }
 }
 
+async function getMultipleOrders(data) {
+    let orderIds = data.join(',');
+    let temp = `SELECT * FROM orders WHERE shopify_order_id IN (${orderIds})`
+    const check = await query(
+        temp
+    )
+    if (check) {
+        return check
+    } else {
+        console.log('error here')
+    }
+}
+
+async function deleteMultipleOrders(data) {
+    let orderIds = data.join(',');
+    let temp = `DELETE FROM orders WHERE shopify_order_id IN (${orderIds})`
+    const check = await query(
+        temp
+    )
+    if (check) {
+        return check
+    } else {
+        console.log('error here')
+    }
+}
+
+async function deleteShop(data) {
+    let shopData = this.getSettings(data);
+
+    let temp = `DELETE FROM orders WHERE settings_id = ${shopData[0].settings_id}`
+    const check = await query(
+        temp
+    )
+
+    temp = `DELETE FROM settings WHERE id = ${shopData[0].id}`
+    const shopDel = await query(
+        temp
+    )
+
+
+    if (shopData) {
+        return shopData
+    } else {
+        console.log('error here')
+    }
+}
+
 
 module.exports = {
     getSettings,
     update,
     addSetting,
     StoreRef,
-    getOrderDetailByOrderId
+    getOrderDetailByOrderId,
+    getMultipleOrders
 };
