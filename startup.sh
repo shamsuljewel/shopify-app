@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /home/forge/shopify.doorhub.io
-npm run start
+cd /home/forge/splugin.doorhub.io
+node server.js
