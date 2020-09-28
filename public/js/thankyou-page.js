@@ -1,8 +1,10 @@
 //Check if we have Shopify Checkout Object Available
-var appUrl = "https://506db4a6.ngrok.io";
+var appUrl = "https://splugin.doorhub.io";
+/*
 if(Shopify.shop != 'doorhub-test.myshopify.com') {
     appUrl = 'https://dhs.gotomy.dev';
 }
+*/
 
 if (typeof Shopify !== 'undefined' && typeof Shopify.checkout !== 'undefined') {
     let orderId = Shopify.checkout.order_id;
