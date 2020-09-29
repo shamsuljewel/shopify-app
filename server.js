@@ -130,6 +130,7 @@ app.prepare().then(() => {
         let dbConfig = data[0];
         const config = {headers: {Authorization: `Bearer ${dbConfig.api_key}`}};
         // 'Copenhagen, asdfasdfadsf, DK'
+
         let Final = {
             dropOffAddress:WholeAddress,  
             customerName: `${orderData.shipping_address.first_name} ${orderData.shipping_address.last_name}`,
