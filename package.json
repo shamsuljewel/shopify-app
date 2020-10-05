@@ -39,7 +39,7 @@
     "koa-send": "^5.0.1",
     "koa-session": "^5.13.1",
     "mysql": "^2.18.1",
-    "next": "^8.1.0",
+    "next": "^9.3.2",
     "nodemon": "^2.0.4",
     "nonce": "^1.0.4",
     "promise-mysql": "^4.1.3",
