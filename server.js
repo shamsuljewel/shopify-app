@@ -135,17 +135,17 @@ app.prepare().then(() => {
             dropOffAddress:WholeAddress,  
             customerName: `${orderData.shipping_address.first_name} ${orderData.shipping_address.last_name}`,
             customerPhone: orderData.phone || 'no-0000000',
+            customerEmail: orderData.email,
             productSize: 'medium',
-            customerFloor: 11,
-            companyId: 1,
+            customerFloor: 0,
             warehouseId: parseInt(dbConfig.warehouse_id),
             description: orderData.name,
             // deliveryId: testdata.line_items[0].id,
             deliveryId: orderData.id,
             dateForDropOff: '2021-03-21',
-            distributionId: 2,
-            regionId: 1,
-            deliveryType: 1
+            distributionId: 1,
+            deliveryType: 1,
+            pluginName: 'shopify'
         }
 
         if ((dbConfig.payment_time == 0 && ctx.originalUrl == '/webhooks/orders/create') ||

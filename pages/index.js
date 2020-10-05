@@ -83,92 +83,136 @@ const Register = (props) => {
     const dhSetFreeThreshold = useCallback(value => setFreeThreshold(value), []);
 
     return (
-        <Page>
-            <div>
-                <div>
-                    {formSuccess && <Banner onDismiss={() => {}} status="success">
-                        <p>Your settings are now successfully updated</p>
-                    </Banner>}
-                    <br />
-                    <Heading>Warehouse Setting </Heading>
-                    <br/>
-                </div>
-                <FormLayout>
-                    <TextField label="Api Key" name='company_Name' value={api_Key} onChange={e => setApi_Key(e)}/>
-                    <Select options={options} onChange={handleDropDown} value={category} label="Make Api Call At"/>
-                    <TextField type="text" name='Warehouse Id' value={w_houseId} label="Warehouse Id"
-                               onChange={(e) => setW_houseId(e)}/>
-                    {/*<RadioButton*/}
-                    {/*    label="Use Doorhub Delivery Cost"*/}
-                    {/*    helpText="The shipping prices will be loaded automatically via DoorHub."*/}
-                    {/*    checked={dhCost === 'dhcEnabled'}*/}
-                    {/*    id="dhcEnabled"*/}
-                    {/*    name="dh-cost"*/}
-                    {/*    onChange={dhCostChange}*/}
-                    {/*/>*/}
-                    {/*<RadioButton*/}
-                    {/*    label="Use Custom Shipping Prices"*/}
-                    {/*    helpText="System will use shipping cost mentioned in below field."*/}
-                    {/*    checked={dhCost === "dhcDisabled"}*/}
-                    {/*    id="dhcDisabled"*/}
-                    {/*    name="dh-cost"*/}
-                    {/*    onChange={dhCostChange}*/}
-                    {/*/>*/}
-                    <Checkbox
-                        label="Use Doorhub Delivery Cost"
-                        helpText="Use Doorhub Delivery CostLoad Shipping cost from Doorhub. Unchecking this box will activate delivery cost box below"
-                        checked={dhCost}
-                        onChange={dhCostChange}
-                    />
-                    <TextField
-                        label="Shipping Cost"
-                        type="number"
-                        value={shippingCost}
-                        onChange={dhShippingCostChange}
-                        // onChange={(newValue) => setShippingCost(newValue)}
-                    />
 
-                    {/*<RadioButton*/}
-                    {/*    label="No Free Shipping"*/}
-                    {/*    helpText="Check this box if you don't want to ship for free"*/}
-                    {/*    checked={freeShip === 'dhFreeDsiabled'}*/}
-                    {/*    id="dhFreeDsiabled"*/}
-                    {/*    name="dh-free-ship"*/}
-                    {/*    onChange={dhFreeShipChange}*/}
-                    {/*/>*/}
-                    {/*<RadioButton*/}
-                    {/*    label="Free Shipping"*/}
-                    {/*    helpText="Enabling this will allow you to set free Shipping for Doorhub. You can use field below to set minimum threshold"*/}
-                    {/*    checked={freeShip === 'dhFreeEnabled'}*/}
-                    {/*    id="dhFreeEnabled"*/}
-                    {/*    name="dh-free-ship"*/}
-                    {/*    onChange={dhFreeShipChange}*/}
-                    {/*/>*/}
+            <table>
+                <tr>
+                    <td style={{width: '50%', padding: '15px'}}>
+                        <div>
+                            {formSuccess && <Banner onDismiss={() => {}} status="success">
+                                <p>Your settings are now successfully updated</p>
+                            </Banner>}
+                            <br />
+                            <Heading>Warehouse Setting </Heading>
 
-                    <Checkbox
-                        label="Free Delivery "
-                        helpText="Free Delivery Check this box for free delivery. It will get order amount to activate free delivery"
-                        checked={freeShip}
-                        onChange={dhFreeShipChange}
-                    />
-                    <TextField
-                        label="Minimum Order for Free Shipping"
-                        type="number"
-                        value={freeThreshold}
-                        onChange={dhSetFreeThreshold}
-                        // onChange={(newValue) => setFreeThreshold(newValue)}
-                    />
+                            <br/>
+                        </div>
+                        <FormLayout>
+                            <TextField label="Api Key" name='company_Name' value={api_Key} onChange={e => setApi_Key(e)}/>
+                            <Select options={options} onChange={handleDropDown} value={category} label="Make Api Call At"/>
+                            <TextField type="text" name='Warehouse Id' value={w_houseId} label="Warehouse Id"
+                                       onChange={(e) => setW_houseId(e)}/>
+                            {/*<RadioButton*/}
+                            {/*    label="Use Doorhub Delivery Cost"*/}
+                            {/*    helpText="The shipping prices will be loaded automatically via DoorHub."*/}
+                            {/*    checked={dhCost === 'dhcEnabled'}*/}
+                            {/*    id="dhcEnabled"*/}
+                            {/*    name="dh-cost"*/}
+                            {/*    onChange={dhCostChange}*/}
+                            {/*/>*/}
+                            {/*<RadioButton*/}
+                            {/*    label="Use Custom Shipping Prices"*/}
+                            {/*    helpText="System will use shipping cost mentioned in below field."*/}
+                            {/*    checked={dhCost === "dhcDisabled"}*/}
+                            {/*    id="dhcDisabled"*/}
+                            {/*    name="dh-cost"*/}
+                            {/*    onChange={dhCostChange}*/}
+                            {/*/>*/}
+                            <Checkbox
+                                label="Use Doorhub Delivery Cost"
+                                helpText="Use Doorhub Delivery CostLoad Shipping cost from Doorhub. Unchecking this box will activate delivery cost box below"
+                                checked={dhCost}
+                                onChange={dhCostChange}
+                            />
+                            <TextField
+                                label="Shipping Cost"
+                                type="number"
+                                value={shippingCost}
+                                onChange={dhShippingCostChange}
+                                // onChange={(newValue) => setShippingCost(newValue)}
+                            />
 
-                    <Button primary onClick={handleSubmit}>Save Changes</Button>
-                    <br />
-                    {formSuccess && <Banner onDismiss={() => {}} status="success">
-                        <p>Your settings are now successfully updated</p>
-                    </Banner>}
-                    <br/>
-                    <br/>
-                </FormLayout>
-            </div>
-        </Page>
+                            {/*<RadioButton*/}
+                            {/*    label="No Free Shipping"*/}
+                            {/*    helpText="Check this box if you don't want to ship for free"*/}
+                            {/*    checked={freeShip === 'dhFreeDsiabled'}*/}
+                            {/*    id="dhFreeDsiabled"*/}
+                            {/*    name="dh-free-ship"*/}
+                            {/*    onChange={dhFreeShipChange}*/}
+                            {/*/>*/}
+                            {/*<RadioButton*/}
+                            {/*    label="Free Shipping"*/}
+                            {/*    helpText="Enabling this will allow you to set free Shipping for Doorhub. You can use field below to set minimum threshold"*/}
+                            {/*    checked={freeShip === 'dhFreeEnabled'}*/}
+                            {/*    id="dhFreeEnabled"*/}
+                            {/*    name="dh-free-ship"*/}
+                            {/*    onChange={dhFreeShipChange}*/}
+                            {/*/>*/}
+
+                            <Checkbox
+                                label="Free Delivery "
+                                helpText="Free Delivery Check this box for free delivery. It will get order amount to activate free delivery"
+                                checked={freeShip}
+                                onChange={dhFreeShipChange}
+                            />
+                            <TextField
+                                label="Minimum Order for Free Shipping"
+                                type="number"
+                                value={freeThreshold}
+                                onChange={dhSetFreeThreshold}
+                                // onChange={(newValue) => setFreeThreshold(newValue)}
+                            />
+
+                            <Button primary onClick={handleSubmit}>Save Changes</Button>
+                            <br />
+                            {formSuccess && <Banner onDismiss={() => {}} status="success">
+                                <p>Your settings are now successfully updated</p>
+                            </Banner>}
+                            <br/>
+                            <br/>
+                        </FormLayout>
+                    </td>
+                    <td style={{paddingLeft: '30px', paddingRight: '30px', marginTop: '0'}}>
+
+                        <Heading>App setup instructions:</Heading>
+                        <br/>
+                        <br/>
+                        <Banner>
+                            <Heading>How does it works for you?</Heading>
+                            <br/>
+                            <br/>
+                                    <p><Heading>Required settings</Heading></p>
+                                    <li>Contact Doorhub (https:doorhub.io/contact) to make an agreement and setup your account</li>
+                                    <li>On the setting page put the api key and warehouse id. The api key and your warehouse id should be provided by Doorhub</li>
+                                        <br/>
+                                        <Heading>Optional settings</Heading>
+                                        <br/>
+                                        <p><b>Make Api Call At:</b>
+                                        <li>Before payment: If Doorhub will get the order request before you received the payment.</li>
+                                        <li>After payment: If Doorhub will get the order request after you received the payment.</li>
+                                        <li>Manual: if you manually send the order request to Doorhub.</li>
+                                        </p>
+                                        <br/>
+                                    <p><b>Price settings</b></p>
+                                    <li>
+
+                                        Use Doorhub Delivery Cost: if this is checked, customer will see the delivery cost as Doorhub delivery cost,
+                                        but if you want to overwrite with your delivery cost,
+                                        you have to uncheck this and put your own cost into Shipping Cost.
+                                    </li>
+                                    <li>Free Delivery: if you want to give free delivery,
+                                        you also have to uncheck the doorhub delivery and check free delivery and
+                                        choose a value for minimum orders. If order price go over that minimum price,
+                                        customer will get the free delivery.</li>
+
+                            <br/>
+                            <br/>
+
+                        </Banner>
+
+                    </td>
+                </tr>
+            </table>
+
     );
 };
 
